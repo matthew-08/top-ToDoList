@@ -2,17 +2,23 @@
 import { getFormData } from "./getFormData"
 
 const popupH = document.getElementById("Epopup")
-
+const popupMain = document.getElementsByClassName("popup-main")
 export function popUp(typeOfPopup) {
     let popUp = event.target.id
     const header = document.getElementById("popup-header")
     popupH.style.display = "flex"
-    header.textContent = "Add task"
 
-
+    if (popUp == "createFolder") {
+        header.textContent = "Create Folder"
+        createBoxInput(["Title"])
+        popupMain[0].classList.add("createFolder");
+        createButtons("createFolder");
+    }
+ 
     if (popUp == "add-task") {
+        header.textContent = "Add task"
         createBoxInput(["Title", "Description", "Due Date", "Priority"]);
-        createButtons();
+        createButtons("addTask");
     }
     
 }
@@ -75,20 +81,28 @@ function createBoxInput(arr) {
     }
 
 }
-function createButtons() {
+function createButtons(buttonType) {
 
 
     let submitButton = document.createElement("button")
     submitButton.textContent = "Submit"
     submitButton.classList.add("submit-button")
     submitButton.type = "submit"
+
+
     submitButton.addEventListener("click", function submit(e) {
         e.preventDefault();
-        getFormData(submitButton.form)
+        if (buttonType === "addTask") {
+        getFormData(submitButton.form, "addTask")
+        }
+        else {
+        getFormData(submitButton.form, "createFolder")
+        }
         form.innerHTML = " "
         popupH.style.display = "none"
 
     })
+
 
 
     let cancelButton = document.createElement("button")
