@@ -15,6 +15,7 @@ function newFolderDom(folder) {
 } */
 
 import { displaySwitchFolders } from "./displayFolders"
+import { currentfolder } from "./getFormData"
 
 export class folder {
     toDofolder = [
@@ -46,13 +47,17 @@ export class folder {
 
     addToFolder(toDo) {
         this.toDofolder.push(toDo)
+        console.log(this.toDofolder);
+        toDo.addParentFolder(this);
     }
 
-    consoleLog() {
-        console.log(this.toDofolder);
+    deleteFromFolder(itemToDelete) {
+        let index = this.toDofolder.indexOf(itemToDelete)
+        this.toDofolder.splice(index, 1);
     }
 
     switchMainDisplayFolder() {
+        currentfolder = this;
         console.log(this.toDofolder);
         displaySwitchFolders(this.toDofolder);
         this.setHeader();

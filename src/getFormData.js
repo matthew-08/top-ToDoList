@@ -32,6 +32,7 @@ function assignFormData(title, description, dueDate, priority, currentFolder) {
     if (currentFolder !== "") {
         currentFolder.addToFolder(toDo);
         currentFolder.switchMainDisplayFolder();
+        
     } else {
     displayFolders(toDo); 
     }

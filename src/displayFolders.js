@@ -33,9 +33,12 @@ function createNeededElements(e) {
     date.classList.add("task-date");
     taskContainer.appendChild(date);
 
+    e.storeDomElement(taskContainer);
+
     div.classList.add("task-logos")
 
     let span = createIcons();
+    e.storeIcons(span);
     span.forEach(e => div.appendChild(e));
     taskContainer.appendChild(div); 
     tasksContainer.appendChild(taskContainer);
@@ -54,6 +57,7 @@ function createIcons() {
         span.appendChild(img);
         arrayOfSpans.push(span);
     }
+
 
 
     arrayOfSpans[0].firstElementChild.src = "/img/edit.png"
