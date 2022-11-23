@@ -1,12 +1,17 @@
 
 import { getFormData } from "./getFormData"
 
+import { currentfolder } from "./getFormData"
+
 const popupH = document.getElementById("Epopup")
 const popupMain = document.getElementsByClassName("popup-main")
-export function popUp(typeOfPopup) {
+export function popUp(currentFolder) {
     let popUp = event.target.id
+    console.log(popUp);
     const header = document.getElementById("popup-header")
     popupH.style.display = "flex"
+
+
 
     if (popUp == "createFolder") {
         header.textContent = "Create Folder"
@@ -93,10 +98,11 @@ function createButtons(buttonType) {
     submitButton.addEventListener("click", function submit(e) {
         e.preventDefault();
         if (buttonType === "addTask") {
-        getFormData(submitButton.form, "addTask")
+        getFormData(submitButton.form, "addTask", currentfolder)
         }
         else {
         getFormData(submitButton.form, "createFolder")
+        popupMain[0].classList.remove("createFolder");
         }
         form.innerHTML = " "
         popupH.style.display = "none"

@@ -7,6 +7,13 @@ export function displayFolders(ok) {
         createNeededElements(ok)
 }
 
+export function displaySwitchFolders(folder) {
+    let currentTaskContainers = document.querySelectorAll(".task-container")
+    currentTaskContainers.forEach(e => e.remove());
+    folder.forEach(e => createNeededElements(e));
+
+
+}
 
 /* function createDOMTask() {
     createNeededElements()

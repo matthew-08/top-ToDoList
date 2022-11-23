@@ -2,6 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Radio Canada', sans-serif;
+
     
 }
 :root {
@@ -10,6 +12,7 @@
     --mid-blue: #007996;
     --mid-blue2: #00b1c0;
     --bright-blue: #00f9e9;
+    --grey: #E6E6E6;
   }
 
 body {
@@ -35,7 +38,7 @@ header {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    background-color: var(--mid-blue2);
+    background-color: var(--grey)
 
 }
 
@@ -48,24 +51,31 @@ header {
 .sidebar .menu-links a,
 .sidebar .folders-container a {
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: white;
     height: 50px;
     display: flex;
     align-items: center;
-    color: aliceblue;
+    color:var(--dark-blue);
     padding: 10px;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     border: 2px solid white;
     border-radius: 20px;
     text-decoration: none;
 }
 
+.folders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
 .sidebar h2 {
+    font-size: 2.1rem;
     margin-top: 2rem;
     text-align: center;
-    color: white;
-    border-bottom: 2px solid var(--dark-blue);
-    margin-bottom: 2rem;
+    color:var(--dark-blue);
+    border-bottom: 5px solid var(--dark-blue);
+    margin-bottom: 1.2rem;
 
 }
 
@@ -124,17 +134,24 @@ header {
 }
 
 .popup-main {
-    background-color: aliceblue;
+    background-color: var(--grey);
     width: 400px;
     height: 500px;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 .popup-title {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     width: 100%;
     height: 20%;
-    background-color: #007996;
-}
+    background-color: var(--mid-blue);
+}   
 
 .popup-main form {
     display: flex;
@@ -163,6 +180,12 @@ header {
 .popup-main button {
     width: 100px;
     height: 50px;
+    border-radius: 10px;
+    border: none;
+    color: #00506f;
+    font-size: 1rem;
+    font-weight: 900;
+    background-color: white;
 
 }
 
@@ -219,8 +242,9 @@ header {
 .sidebar button img {
     margin-top: 5px;
     margin-left: auto;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
 }
 
 .sidebar button {
@@ -230,11 +254,17 @@ header {
     align-items: center;
     font-size: 1.4rem;
     height: 50px;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: black;
-    border: 2px solid white;
+    background-color: white;
+    color: var(--dark-blue);
+    border: none;
     border-radius: 10px;
     margin-bottom: 1rem ;
+    width: 50%;
+    align-self: center;
+}
+
+.sidebar button p {
+    pointer-events: none;
 }
 
 .sidebar button:hover {
