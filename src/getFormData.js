@@ -1,6 +1,6 @@
 import { newToDo } from "./addToDo";
 import { addToMainFolder, addFolder, } from "./folders";
-import { displayFolders } from "./displayFolders";
+import { displayFolders, displaySwitchFolders } from "./displayFolders";
 import { createFolder, folder } from "./createNewFolder";
 
 
@@ -16,10 +16,14 @@ export function getFormData(form, buttonType, currentFolder) {
     let description = object.description
     let dueDate = object.dueDate
     let priority = object.priority
-    if (buttonType === "addTask") {
+    if (buttonType === "editTask") {
+        let folder = currentFolder.parentFolder;
+        console.log(folder.toDofolder)  ;
+        currentFolder.editToDo(title, description, dueDate, priority);
+        displaySwitchFolders(folder.toDofolder);
+    } else if (buttonType === "addTask") {
     assignFormData(title, description, dueDate, priority, currentFolder);
-    }
-    else {
+    } else  {
         newFolder(title);
     }
 }
@@ -45,3 +49,4 @@ function newFolder(title) {
     newFolder.switchMainDisplayFolder();
 
 }
+

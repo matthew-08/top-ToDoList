@@ -1,13 +1,14 @@
 import { folder } from "./createNewFolder"
 
+import { popUp } from "./popup"
 
 export class newToDo {
 
-    constructor(title, description, dueDate, folder) {
+    constructor(title, description, dueDate, priority) {
         this.title = title
         this.description = description
         this.dueDate = dueDate
-        this.folder = folder
+        this.priority = priority
     }
     storeIcons(span) {
         const that = this
@@ -18,12 +19,15 @@ export class newToDo {
                 that.delete();
                 that.delete2();
             } else if (icon.classList.contains("edit")) {
-                console.log("edit")
+                popUp("edit", that);
                 
-            } else console.log("info");
+            } else {
+                popUp("info", that);
+            }
         }))
     }
     storeDomElement(taskContainer) {
+        console.log(taskContainer);
         this.taskContainer = taskContainer;
 
     }
@@ -43,5 +47,13 @@ export class newToDo {
         this.parentFolder = e;
         console.log(this.parentFolder);   
     }
+    
+    editToDo(title, description, dueDate, priority) {
+        this.title = title
+        this.description = description
+        this.dueDate = dueDate
+        this.priority = priority
+    }
+    
 
 }

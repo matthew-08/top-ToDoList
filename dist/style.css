@@ -28,8 +28,13 @@ header {
     background: rgb(0,80,111);
     background: var(--dark-blue2);
     color: white;
-    padding: 1rem 0.3rem;
+    padding: 1rem 1rem;
 
+
+}
+
+.logo {
+    font-size: 1.2rem;
 }
 
 .sidebar {
@@ -48,7 +53,6 @@ header {
     gap: 2rem;
 
 }
-.sidebar .menu-links a,
 .sidebar .folders-container a {
     text-align: left;
     background-color: white;
@@ -62,6 +66,15 @@ header {
     border-radius: 20px;
     text-decoration: none;
 }
+.sidebar .menu-links a {
+    color:var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+.sidebar .menu-links a:hover {
+    color: var(--mid-blue);
+}
+
 
 .folders-container {
     display: flex;
@@ -71,7 +84,7 @@ header {
 
 .sidebar h2 {
     font-size: 2.1rem;
-    margin-top: 2rem;
+    margin-top: 6rem;
     text-align: center;
     color:var(--dark-blue);
     border-bottom: 5px solid var(--dark-blue);
@@ -124,7 +137,14 @@ header {
     border-bottom: 1px solid gray;
     display: flex;
     justify-content: space-between;
+    transition: .2s ease;
+    
 
+}
+
+.task-container:hover {
+background-color: rgba(240, 240, 240, 0.89);
+transform: translate(-1px);
 }
 
 #Epopup {
@@ -140,7 +160,7 @@ header {
 .popup-main {
     background-color: var(--grey);
     width: 400px;
-    height: 500px;
+    height: 505px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -153,7 +173,7 @@ header {
     align-items: center;
     color: white;
     width: 100%;
-    height: 100px;
+    height: 60px;
     background-color: var(--mid-blue);
 }   
 
@@ -191,6 +211,9 @@ header {
     font-weight: 900;
     background-color: white;
 
+}
+.popup-main button:hover {
+    background-color: #c7c9ce;
 }
 
 .buttons-container {
@@ -243,6 +266,16 @@ header {
     font-size: 1.3rem;
 }
 
+.task-name::before {
+    content: " ";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid black;
+}
+
+
 .sidebar button img {
     margin-top: 5px;
     margin-left: auto;
@@ -278,4 +311,41 @@ header {
 
 .createFolder {
     height: 200px;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--dark-blue);
+    margin-bottom: 1.8rem;
+    align-items: flex-end;
+
+    
+}
+
+.info-item p {
+    text-align: end;
+}
+
+.desc-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    overflow: auto;
+    align-items: flex-end;
+}
+
+.desc {
+    margin-top: auto;
+    font-size: .8rem ;
 }
