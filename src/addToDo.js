@@ -2,6 +2,8 @@ import { folder } from "./createNewFolder"
 
 import { popUp } from "./popup"
 
+import { sideBarFolders } from "./folders"
+
 export class newToDo {
 
     constructor(title, description, dueDate, priority) {
@@ -27,20 +29,20 @@ export class newToDo {
         }))
     }
     storeDomElement(taskContainer) {
-        console.log(taskContainer);
         this.taskContainer = taskContainer;
 
     }
     delete() {
-        console.log(this.folder); 
-        this.taskContainer.remove();
-        console.log(this.folder);      
+        this.taskContainer.remove();    
 
     }
 
     delete2() {
         console.log(this.parentFolder);
         this.parentFolder.deleteFromFolder(this);
+        if (this.dateFolder === "week") {
+            sideBarFolders.removeWeek(this);
+        }
     }
 
     addParentFolder(e) {
@@ -55,5 +57,8 @@ export class newToDo {
         this.priority = priority
     }
     
+    addDateFolder(folder) {
+        this.dateFolder = folder;
+    }
 
 }

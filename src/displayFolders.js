@@ -8,6 +8,7 @@ export function displayFolders(ok) {
 }
 
 export function displaySwitchFolders(folder) {
+    console.log(folder);
     let currentTaskContainers = document.querySelectorAll(".task-container")
     currentTaskContainers.forEach(e => e.remove());
     folder.forEach(e => createNeededElements(e));

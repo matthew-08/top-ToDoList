@@ -2,6 +2,9 @@ import { newToDo } from "./addToDo";
 import { addToMainFolder, addFolder, } from "./folders";
 import { displayFolders, displaySwitchFolders } from "./displayFolders";
 import { createFolder, folder } from "./createNewFolder";
+import isThisWeek from "date-fns/isThisWeek";
+import { isToday } from "date-fns";
+import { sideBarFolders } from "./folders";
 
 
 
@@ -32,6 +35,7 @@ function assignFormData(title, description, dueDate, priority, currentFolder) {
     
 
     let toDo = new newToDo(title, description, dueDate, priority);
+    determineDate(toDo);
     addToMainFolder().add(toDo);
     if (currentFolder !== "") {
         currentFolder.addToFolder(toDo);
@@ -47,6 +51,29 @@ function newFolder(title) {
     currentfolder = newFolder;
     newFolder.newFolderDom();
     newFolder.switchMainDisplayFolder();
+
+}
+
+function determineDate(toDo) {
+    let parsedDate = Date.parse(toDo.dueDate);
+    let folderDate = ""
+
+    if (isThisWeek(parsedDate)) {
+        folderDate = "week"
+    }
+
+    else if (isToday(parsedDate)){
+        folderDate = "today"
+    }
+
+    if (folderDate === "week") {
+        sideBarFolders.pushToWeek(toDo);
+        toDo.addDateFolder("week");
+
+    } else if (folderDate === "today") {
+        sideBarFolders().pushToToday(toDo);
+        toDo.addDateFolder("today");
+    }
 
 }
 

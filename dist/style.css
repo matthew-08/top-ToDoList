@@ -72,9 +72,13 @@ header {
     font-size: 1.4rem;
 }
 .sidebar .menu-links a:hover {
+    cursor: pointer;
     color: var(--mid-blue);
 }
 
+.menu-link-item:hover {
+    cursor: pointer;
+}
 
 .folders-container {
     display: flex;
