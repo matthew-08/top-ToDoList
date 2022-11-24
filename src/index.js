@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { newToDo } from "./addToDo";
 import { addToMainFolder } from "./folders";
 import { createFolder } from "./createNewFolder";

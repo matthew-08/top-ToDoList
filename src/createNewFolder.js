@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* export function createFolder(folder) {
     const newFolder = [ ]
     newFolderDom(folder);
@@ -13,6 +14,7 @@ function newFolderDom(folder) {
     folderButton.textContent = folder
     appendHere.appendChild(folderButton)
 } */
+/* eslint-disable */
 
 import { displaySwitchFolders } from "./displayFolders"
 import { currentfolder, getFormData } from "./getFormData"
@@ -43,7 +45,7 @@ export class folder {
         let icon = new Image(20, 20)
         icon.src = "/img/trash.png"
         folderButton.appendChild(icon);
-        folderButton.addEventListener("click", function() {
+        icon.addEventListener("click", function() {
             that.deleteFolder();
         })
         const that = this
@@ -73,7 +75,6 @@ export class folder {
 
 
     deleteFolder() {
-        console.log(this.folder);
         popUp("warning", this.folder);
     }
 

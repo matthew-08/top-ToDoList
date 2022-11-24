@@ -369,3 +369,22 @@ transform: translate(-1px);
     background-color: #cd4a4a;
     font-size: 1rem;
 }
+
+.warning p {
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center  ;
+}
+
+.delete-button {
+    margin: 0 auto;
+    margin-top: auto;
+    width: 200px !important;;
+    background-color: #cd4a4a !important;
+    margin-bottom: 10px;
+    color: white !important;
+    font-size: 1.5rem !important;
+}
+.delete-button:hover {
+    scale: 1.02;
+}
