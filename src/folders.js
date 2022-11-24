@@ -10,7 +10,6 @@ export function addToMainFolder(ok) {
 
     function add(ok) {
             mainFolder.push(ok);
-            checkMainFolder();
     }
 
 
@@ -18,8 +17,12 @@ export function addToMainFolder(ok) {
         console.log(mainFolder);
     }
 
+    function removeFromMainFolder(item) {
+        let index = mainFolder.indexOf(item);
+        mainFolder.splice(index, 1);
+    }
 
-    return { add, mainFolder, addFolder}
+    return { add, mainFolder, addFolder, removeFromMainFolder}
 }
 
 export function addFolder(folder) {
@@ -49,10 +52,19 @@ export const sideBarFolders = {
     getWeek() {
         return this.week;
     },
+
+    getToday() {
+        return this.today;
+    },
     
     removeWeek(item) {
         let index = this.week.indexOf(item);
         this.week.splice(index, 1);
+    },
+
+    removeToday(item) {
+        let index = this.week.indexOf(item);
+        this.today.splice(index, 1)
     }
 }
 

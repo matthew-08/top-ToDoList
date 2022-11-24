@@ -2,7 +2,7 @@ import { folder } from "./createNewFolder"
 
 import { popUp } from "./popup"
 
-import { sideBarFolders } from "./folders"
+import { addToMainFolder, sideBarFolders } from "./folders"
 
 export class newToDo {
 
@@ -40,9 +40,13 @@ export class newToDo {
     delete2() {
         console.log(this.parentFolder);
         this.parentFolder.deleteFromFolder(this);
-        if (this.dateFolder === "week") {
+        if (this.inWeekFolder === true) {
             sideBarFolders.removeWeek(this);
         }
+        if (this.inTodayFolder === true) {
+            sideBarFolders.removeToday(this);
+        }
+        addToMainFolder().removeFromMainFolder(this);
     }
 
     addParentFolder(e) {
@@ -58,7 +62,12 @@ export class newToDo {
     }
     
     addDateFolder(folder) {
-        this.dateFolder = folder;
+        if (folder === "week") {
+            this.inWeekFolder = true;
+        } 
+        if (folder === "today") {
+            this.inTodayFolder = true;
+        }
     }
 
 }

@@ -10,6 +10,13 @@ export function popUp(e, toDo) {
     const header = document.getElementById("popup-header")
     popupH.style.display = "flex"
 
+    if(e === "warning") {
+        let headerTop = document.querySelector(".popup-title")
+        headerTop.classList.add("header-warning")
+        createWarningBox(toDo);
+        header.textContent = "Delete Folder";
+        return; 
+    }
 
     if (e === "info") {
         header.textContent = "Info"
@@ -220,3 +227,18 @@ function infoContainer(left, right) {
     
 
 }
+
+
+function createWarningBox(e) {
+     toggleFormDisplay();
+    let warningText = document.createElement("p")
+    warningText.innerHTML = `This will permanently delete the folder:` + "<br>" + `${e}` + "<br>" + "Click 'delete' to confirm."
+    popupMain[0].appendChild(warningText);
+    console.log("test")
+    popupMain[0].classList.add("warning")
+}
+
+ function toggleFormDisplay() {
+    let form = document.getElementById("form")
+    form.style.display = "none";
+ }

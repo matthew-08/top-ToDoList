@@ -15,7 +15,8 @@ function newFolderDom(folder) {
 } */
 
 import { displaySwitchFolders } from "./displayFolders"
-import { currentfolder } from "./getFormData"
+import { currentfolder, getFormData } from "./getFormData"
+import { popUp } from "./popup"
 
 export class folder {
     toDofolder = [
@@ -39,6 +40,12 @@ export class folder {
         folderButton.classList.add("menu-link-item")
         folderButton.textContent = this.folder;
         appendHere.appendChild(folderButton)
+        let icon = new Image(20, 20)
+        icon.src = "/img/trash.png"
+        folderButton.appendChild(icon);
+        folderButton.addEventListener("click", function() {
+            that.deleteFolder();
+        })
         const that = this
         folderButton.addEventListener("click", function() {
             that.switchMainDisplayFolder();
@@ -63,12 +70,11 @@ export class folder {
         this.setHeader();
     }
 
-    switch() {
-        console.log(this.toDofolder);
-    }
 
-    updateDisplay() {
 
+    deleteFolder() {
+        console.log(this.folder);
+        popUp("warning", this.folder);
     }
 
 }

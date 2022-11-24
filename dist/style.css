@@ -76,6 +76,11 @@ header {
     color: var(--mid-blue);
 }
 
+.menu-link-item  {
+    display: flex;
+    justify-content: space-between;
+}
+
 .menu-link-item:hover {
     cursor: pointer;
 }
@@ -352,4 +357,15 @@ transform: translate(-1px);
 .desc {
     margin-top: auto;
     font-size: .8rem ;
+}
+
+.warning {
+    width: 400px;
+    font-size: 1.2rem;
+    height: 275px;
+}
+
+.header-warning {
+    background-color: #cd4a4a;
+    font-size: 1rem;
 }

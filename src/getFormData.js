@@ -46,7 +46,7 @@ function assignFormData(title, description, dueDate, priority, currentFolder) {
     }
 }
 
-function newFolder(title) {
+export function newFolder(title) {
     let newFolder = new folder(title);
     currentfolder = newFolder;
     newFolder.newFolderDom();
@@ -56,22 +56,23 @@ function newFolder(title) {
 
 function determineDate(toDo) {
     let parsedDate = Date.parse(toDo.dueDate);
-    let folderDate = ""
+    let week = ""
+    let today = ""
 
     if (isThisWeek(parsedDate)) {
-        folderDate = "week"
+        week = true
     }
 
-    else if (isToday(parsedDate)){
-        folderDate = "today"
+    if (isToday(parsedDate)){
+        today = true
     }
 
-    if (folderDate === "week") {
+    if (week === true) {
         sideBarFolders.pushToWeek(toDo);
         toDo.addDateFolder("week");
 
-    } else if (folderDate === "today") {
-        sideBarFolders().pushToToday(toDo);
+    } if (today === true) {
+        sideBarFolders.pushToToday(toDo);
         toDo.addDateFolder("today");
     }
 
