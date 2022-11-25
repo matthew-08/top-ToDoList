@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { folder } from './createNewFolder';
 import { getFormData, currentfolder } from './getFormData';
 
 const popupH = document.getElementById('Epopup');
@@ -196,6 +197,8 @@ function infoContainer(left, right) {
 }
 
 function createWarningBox(e) {
+
+
   toggleFormDisplay("on");
   const warningText = document.createElement('p');
   warningText.innerHTML = 'This will permanently delete the folder:' + "<br>" + "<br>" + `${e}` + '<br>' 
@@ -207,7 +210,9 @@ function createWarningBox(e) {
   button.textContent = "Delete";
   button.classList.add("delete-button");
   popupMain[0].appendChild(button);
-  button.addEventListener("click", function(e) {
+  const folder = e
+    button.addEventListener("click", function(a) {
+    folder.deleteToDo()
     button.remove();
     popupMain[0].classList.remove('warning')
     warningText.remove();
@@ -216,8 +221,8 @@ function createWarningBox(e) {
     toggleFormDisplay();
     const headerTop = document.querySelector('.popup-title');
     headerTop.classList.remove('header-warning');
-    e.preventDefault();
-
+    a.preventDefault();
+    return
 
   } )
 }

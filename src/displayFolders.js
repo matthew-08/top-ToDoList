@@ -49,11 +49,11 @@ function createIcons() {
     arrayOfSpans.push(span);
   }
 
-  arrayOfSpans[0].firstElementChild.src = '/img/edit.png';
+  arrayOfSpans[0].firstElementChild.src = 'img/edit.png';
   arrayOfSpans[0].classList.add('edit');
-  arrayOfSpans[2].firstElementChild.src = '/img/trash.png';
+  arrayOfSpans[2].firstElementChild.src = 'img/trash.png';
   arrayOfSpans[2].classList.add('trash');
-  arrayOfSpans[1].firstElementChild.src = '/img/info.svg  ';
+  arrayOfSpans[1].firstElementChild.src = 'img/info.svg  ';
   arrayOfSpans[1].classList.add('info');
   return arrayOfSpans;
 }

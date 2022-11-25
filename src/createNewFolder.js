@@ -17,8 +17,11 @@ function newFolderDom(folder) {
 /* eslint-disable */
 
 import { displaySwitchFolders } from "./displayFolders"
+import { addToMainFolder, mainFolder, sideBarFolders } from "./folders"
 import { currentfolder, getFormData } from "./getFormData"
 import { popUp } from "./popup"
+import { setHeader } from "./sidebar-links"
+
 
 export class folder {
     toDofolder = [
@@ -43,7 +46,7 @@ export class folder {
         folderButton.textContent = this.folder;
         appendHere.appendChild(folderButton)
         let icon = new Image(20, 20)
-        icon.src = "/img/trash.png"
+        icon.src = "img/trash.png"
         folderButton.appendChild(icon);
         icon.addEventListener("click", function() {
             that.deleteFolder();
@@ -52,6 +55,7 @@ export class folder {
         folderButton.addEventListener("click", function() {
             that.switchMainDisplayFolder();
         });
+        this.folderDom = folderButton;
     }
 
     addToFolder(toDo) {
@@ -72,10 +76,33 @@ export class folder {
         this.setHeader();
     }
 
-
-
     deleteFolder() {
-        popUp("warning", this.folder);
+        popUp("warning", this);
+    }
+
+    deleteToDo() { // Deletes any toDo tasks inside this folder from "All" and "Today" / "Week" folders
+        let folder = this.toDofolder;
+        folder.forEach(e => 
+        {
+            addToMainFolder().removeFromMainFolder(e)
+            if (e.inWeekFolder === true) {
+                sideBarFolders.removeWeek(e);
+            }
+            if (e.inTodayFolder === true) {
+                sideBarFolders.removeToday(e);
+            }
+        });
+        this.deleteDOM();
+    }
+
+    deleteDOM() {
+        this.folderDom.remove();
+        this.switchAway();
+    }
+
+    switchAway() {
+        displaySwitchFolders(mainFolder);
+        setHeader("All");
     }
 
 }

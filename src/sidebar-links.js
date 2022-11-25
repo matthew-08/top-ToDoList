@@ -24,7 +24,7 @@ export function ok() {
   }));
 }
 
-function setHeader(newHeader) {
+export function setHeader(newHeader) {
   const header = document.querySelector('.main-title');
   header.textContent = newHeader;
 }

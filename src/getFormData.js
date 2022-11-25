@@ -5,6 +5,7 @@ import { newToDo } from './addToDo';
 import { addToMainFolder, addFolder, sideBarFolders } from './folders';
 import { displayFolders, displaySwitchFolders } from './displayFolders';
 import { createFolder, folder } from './createNewFolder';
+import { storeFolder } from './index';
 
 export let currentfolder = '';
 
@@ -44,8 +45,13 @@ function assignFormData(title, description, dueDate, priority, currentFolder) {
 export function newFolder(title) {
   const newFolder = new folder(title);
   currentfolder = newFolder;
+  console.log(newFolder);
   newFolder.newFolderDom();
   newFolder.switchMainDisplayFolder();
+  storeFolder.push(newFolder);
+  localStorage.setItem("folders", JSON.stringify(storeFolder));
+  console.log(storeFolder);
+
 }
 
 function determineDate(toDo) {
@@ -69,3 +75,4 @@ function determineDate(toDo) {
     toDo.addDateFolder('today');
   }
 }
+
